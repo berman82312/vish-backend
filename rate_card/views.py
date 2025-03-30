@@ -39,5 +39,5 @@ class OptionsViewset(viewsets.ViewSet):
             "milestones": [{"value": x[0], "label": x[1]} for x in RateCard.MILESTONE_CHOICES],
             # "service_categories": ServiceCategorySerializer(ServiceCategory.objects.all(), many=True).data,
             # "service_areas": ServiceAreaSerializer(ServiceArea.objects.all(), many=True).data,
-            # "business_models": BusinessModelSerializer(BusinessModel.objects.all(), many=True).data
+            "business_models": BusinessModelSerializer(BusinessModel.objects.all(), many=True).data
         })
