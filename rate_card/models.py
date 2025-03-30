@@ -2,6 +2,10 @@ from django.db import models
 
 # Create your models here.
 
+class LatestRateCardManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_latest=True, is_archived=False)
+
 class RateCard(models.Model):
     class Meta:
         db_table = 'rate_cards'
@@ -68,6 +72,8 @@ class RateCard(models.Model):
         symmetrical=False,
         related_name='related_rate_cards'
     )
+
+    latest = LatestRateCardManager()
 
     def __str__(self):
         return self.name

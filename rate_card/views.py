@@ -7,7 +7,7 @@ class RateCardViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing rate card instances.
     """
-    queryset = RateCard.objects.all()
+    queryset = RateCard.latest.all()
     serializer_class = RateCardSerializer
     # filter_backends = [DjangoFilterBackend]
     # filterset_fields = ['milestone', 'service_areas']
