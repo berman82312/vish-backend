@@ -62,6 +62,13 @@ class RateCard(models.Model):
         related_name='rate_cards'
     )
 
+    include_rate_cards = models.ManyToManyField(
+        'self',
+        blank=True,
+        symmetrical=False,
+        related_name='related_rate_cards'
+    )
+
     def __str__(self):
         return self.name
 
