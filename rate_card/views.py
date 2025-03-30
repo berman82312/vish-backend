@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
-from .models import RateCard
-from .serializers import RateCardSerializer
+from .models import RateCard, BusinessModel
+from .serializers import RateCardSerializer, BusinessModelSerializer
 # Create your views here.
 class RateCardViewSet(viewsets.ModelViewSet):
     """
@@ -14,6 +14,17 @@ class RateCardViewSet(viewsets.ModelViewSet):
     # search_fields = ['name']
     ordering = ['created_at']
 
+
+class BusinessModelViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing business model instances.
+    """
+    queryset = BusinessModel.objects.all()
+    serializer_class = BusinessModelSerializer
+    # filter_backends = [DjangoFilterBackend]
+    # filterset_fields = ['milestone', 'service_areas']
+    # search_fields = ['name']
+    ordering = ['created_at']
 
 class OptionsViewset(viewsets.ViewSet):
     """

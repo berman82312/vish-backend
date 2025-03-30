@@ -22,8 +22,11 @@ from rate_card import views as RateCardViews
 
 router = routers.DefaultRouter()
 router.register(r'accounts', AccountViews.AccountViewSet, basename='account')
+
+# Rate cards
 router.register(r'rate-cards', RateCardViews.RateCardViewSet, basename='rate-card')
 router.register(r'options/rate-card', RateCardViews.OptionsViewset, basename='options-rate-card')
+router.register(r'business-models', RateCardViews.BusinessModelViewSet, basename='business-model')
 
 urlpatterns = [
     path('api/', include(router.urls)),
