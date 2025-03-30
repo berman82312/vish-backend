@@ -17,12 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from account import views as account_views
-from rate_card import views as rate_card_views
+from account import views as AccountViews
+from rate_card import views as RateCardViews
 
 router = routers.DefaultRouter()
-router.register(r'accounts', account_views.AccountViewSet)
-router.register(r'rate-cards', rate_card_views.RateCardViewSet)
+router.register(r'accounts', AccountViews.AccountViewSet, basename='account')
+router.register(r'rate-cards', RateCardViews.RateCardViewSet, basename='rate-card')
+router.register(r'options/rate-card', RateCardViews.OptionsViewset, basename='options-rate-card')
 
 urlpatterns = [
     path('api/', include(router.urls)),

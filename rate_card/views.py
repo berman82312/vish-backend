@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.response import Response
 from .models import RateCard
 from .serializers import RateCardSerializer
 # Create your views here.
@@ -12,3 +13,20 @@ class RateCardViewSet(viewsets.ModelViewSet):
     # filterset_fields = ['milestone', 'service_areas']
     # search_fields = ['name']
     ordering = ['created_at']
+
+
+class OptionsViewset(viewsets.ViewSet):
+    """
+    A viewset for viewing and editing options instances.
+    """
+
+    def list(self, request):
+        """
+        List all options.
+        """
+        return Response({
+            "milestones": [{"value": x[0], "label": x[1]} for x in RateCard.MILESTONE_CHOICES],
+            # "service_categories": ServiceCategorySerializer(ServiceCategory.objects.all(), many=True).data,
+            # "service_areas": ServiceAreaSerializer(ServiceArea.objects.all(), many=True).data,
+            # "business_models": BusinessModelSerializer(BusinessModel.objects.all(), many=True).data
+        })

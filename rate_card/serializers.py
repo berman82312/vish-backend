@@ -1,5 +1,38 @@
 from rest_framework import serializers
-from .models import RateCard
+from .models import RateCard, ServiceArea, ServiceCategory, BusinessModel
+
+
+class ServiceCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServiceCategory
+        fields = ('id', 'title', 'description')
+        extra_kwargs = {
+            'created_at': {'read_only': True},
+            'updated_at': {'read_only': True},
+        }
+        read_only_fields = ('created_at', 'updated_at', 'id')
+
+
+class ServiceAreaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServiceArea
+        fields = ('id', 'title')
+        extra_kwargs = {
+            'created_at': {'read_only': True},
+            'updated_at': {'read_only': True},
+        }
+        read_only_fields = ('created_at', 'updated_at', 'id')
+
+
+class BusinessModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BusinessModel
+        fields = ('id', 'title', 'description')
+        extra_kwargs = {
+            'created_at': {'read_only': True},
+            'updated_at': {'read_only': True},
+        }
+        read_only_fields = ('created_at', 'updated_at', 'id')
 
 class RateCardSerializer(serializers.ModelSerializer):
     class Meta:
