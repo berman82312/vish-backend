@@ -22,7 +22,7 @@ from rate_card import views as rate_card_views
 
 router = routers.DefaultRouter()
 router.register(r'accounts', account_views.AccountViewSet)
-router.register(r'rate_cards', rate_card_views.RateCardViewSet)
+router.register(r'rate-cards', rate_card_views.RateCardViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
