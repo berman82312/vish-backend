@@ -27,6 +27,8 @@ router.register(r'accounts', AccountViews.AccountViewSet, basename='account')
 router.register(r'rate-cards', RateCardViews.RateCardViewSet, basename='rate-card')
 router.register(r'options/rate-card', RateCardViews.OptionsViewset, basename='options-rate-card')
 router.register(r'business-models', RateCardViews.BusinessModelViewSet, basename='business-model')
+router.register(r'service-categories', RateCardViews.ServiceCategoryViewSet, basename='service-category')
+router.register(r'service-areas', RateCardViews.ServiceAreaViewSet, basename='service-area')
 
 urlpatterns = [
     path('api/', include(router.urls)),
