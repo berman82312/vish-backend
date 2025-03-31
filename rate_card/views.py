@@ -61,7 +61,8 @@ class OptionsViewset(viewsets.ViewSet):
         """
         return Response({
             "milestones": [{"value": x[0], "label": x[1]} for x in RateCard.MILESTONE_CHOICES],
-            # "service_categories": ServiceCategorySerializer(ServiceCategory.objects.all(), many=True).data,
-            # "service_areas": ServiceAreaSerializer(ServiceArea.objects.all(), many=True).data,
-            "business_models": [{"value": x.id, "label": x.title} for x in BusinessModel.objects.all()]
+            "service_categories": [{"value": x.id, "label": x.title} for x in ServiceCategory.objects.all()],
+            "service_areas": [{"value": x.id, "label": x.title} for x in ServiceArea.objects.all()],
+            "business_models": [{"value": x.id, "label": x.title} for x in BusinessModel.objects.all()],
+            "price_units": [{"value": x[0], "label": x[1]} for x in RateCard.UNIT_CHOICES],
         })

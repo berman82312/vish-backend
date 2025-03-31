@@ -73,6 +73,7 @@ class RateCard(models.Model):
         related_name='related_rate_cards'
     )
 
+    objects = models.Manager()
     latest = LatestRateCardManager()
 
     def __str__(self):
