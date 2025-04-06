@@ -65,4 +65,5 @@ class OptionsViewset(viewsets.ViewSet):
             "service_areas": [{"value": x.id, "label": x.title} for x in ServiceArea.objects.all()],
             "business_models": [{"value": x.id, "label": x.title} for x in BusinessModel.objects.all()],
             "price_units": [{"value": x[0], "label": x[1]} for x in RateCard.UNIT_CHOICES],
+            "rate_cards": [{"value": x.id, "label": f"{x.get_milestone_display()}: {x.title}"} for x in RateCard.latest.all()],
         })
