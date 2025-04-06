@@ -36,8 +36,25 @@ class BusinessModelSerializer(serializers.ModelSerializer):
 
 class RateCardSerializer(serializers.ModelSerializer):
     business_model = BusinessModelSerializer(read_only=True)
+    business_model_id = serializers.PrimaryKeyRelatedField(
+        queryset=BusinessModel.objects.all(),
+        source='business_model',
+        write_only=True
+    )
     service_categories = ServiceCategorySerializer(many=True, read_only=True)
+    service_category_ids = serializers.PrimaryKeyRelatedField(
+        queryset=ServiceCategory.objects.all(),
+        source='service_categories',
+        write_only=True,
+        many=True
+    )
     service_areas = ServiceAreaSerializer(many=True, read_only=True)
+    service_area_ids = serializers.PrimaryKeyRelatedField(
+        queryset=ServiceArea.objects.all(),
+        source='service_areas',
+        write_only=True,
+        many=True
+    )
     class Meta:
         model = RateCard
         fields = '__all__'
@@ -46,27 +63,3 @@ class RateCardSerializer(serializers.ModelSerializer):
             'updated_at': {'read_only': True},
         }
         read_only_fields = ('created_at', 'updated_at', 'id', 'archived_at')
-
-    def create(self, validated_data):
-        service_categories = validated_data.pop('service_categories', [])
-        service_areas = validated_data.pop('service_areas', [])
-        rate_card = RateCard.objects.create(**validated_data)
-        rate_card.service_categories.set(service_categories)
-        rate_card.service_areas.set(service_areas)
-        return rate_card
-
-    def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.description = validated_data.get('description', instance.description)
-        instance.business_model = validated_data.get('business_model', instance.business_model)
-        instance.service_categories.set(validated_data.get('service_categories', instance.service_categories.all()))
-        instance.service_areas.set(validated_data.get('service_areas', instance.service_areas.all()))
-        instance.save()
-        return instance
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        # representation['service_categories'] = [category.title for category in instance.service_categories.all()]
-        # representation['service_areas'] = [area.title for area in instance.service_areas.all()]
-        # representation['business_model'] = instance.business_model.title
-        return representation
