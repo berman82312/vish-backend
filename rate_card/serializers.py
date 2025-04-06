@@ -35,6 +35,9 @@ class BusinessModelSerializer(serializers.ModelSerializer):
         read_only_fields = ('created_at', 'updated_at', 'id')
 
 class RateCardSerializer(serializers.ModelSerializer):
+    business_model = BusinessModelSerializer(read_only=True)
+    service_categories = ServiceCategorySerializer(many=True, read_only=True)
+    service_areas = ServiceAreaSerializer(many=True, read_only=True)
     class Meta:
         model = RateCard
         fields = '__all__'
@@ -45,7 +48,11 @@ class RateCardSerializer(serializers.ModelSerializer):
         read_only_fields = ('created_at', 'updated_at', 'id', 'archived_at')
 
     def create(self, validated_data):
+        service_categories = validated_data.pop('service_categories', [])
+        service_areas = validated_data.pop('service_areas', [])
         rate_card = RateCard.objects.create(**validated_data)
+        rate_card.service_categories.set(service_categories)
+        rate_card.service_areas.set(service_areas)
         return rate_card
 
     def update(self, instance, validated_data):
@@ -59,7 +66,7 @@ class RateCardSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        representation['service_categories'] = [category.title for category in instance.service_categories.all()]
-        representation['service_areas'] = [area.title for area in instance.service_areas.all()]
-        representation['business_model'] = instance.business_model.title
+        # representation['service_categories'] = [category.title for category in instance.service_categories.all()]
+        # representation['service_areas'] = [area.title for area in instance.service_areas.all()]
+        # representation['business_model'] = instance.business_model.title
         return representation
