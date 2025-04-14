@@ -29,10 +29,12 @@ class RateCard(models.Model):
 
     HOUR = 'hour'
     HUMANDAY = 'humanday'
+    MONTHLY = 'monthly'
     ONETIME = 'onetime'
     UNIT_CHOICES = [
         (HOUR, 'Hour'),
         (HUMANDAY, 'Human Day'),
+        (MONTHLY, 'Monthly'),
         (ONETIME, 'One Time'),
     ]
     

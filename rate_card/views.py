@@ -2,7 +2,8 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from .models import RateCard, BusinessModel, ServiceCategory, ServiceArea
 from .serializers import RateCardSerializer, BusinessModelSerializer, ServiceCategorySerializer, ServiceAreaSerializer
-# Create your views here.
+
+
 class RateCardViewSet(viewsets.ModelViewSet):
     """
     A viewset for viewing and editing rate card instances.
