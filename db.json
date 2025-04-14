@@ -44,7 +44,7 @@
         "version": 1,
         "description": null,
         "created_at": "2025-04-06T12:14:50.033Z",
-        "updated_at": "2025-04-06T13:31:16.685Z",
+        "updated_at": "2025-04-14T03:16:55.328Z",
         "archived_at": null,
         "business_model": 2,
         "service_categories": [
@@ -115,6 +115,62 @@
     }
 },
 {
+    "model": "rate_card.ratecard",
+    "pk": 5,
+    "fields": {
+        "milestone": "m1",
+        "title": "GA4 Console Configuration & Maintenance",
+        "price": "180.00",
+        "price_unit": "hour",
+        "default_amount": 4,
+        "min_amount": 1,
+        "is_recurring": true,
+        "is_latest": false,
+        "is_archived": true,
+        "version": 1,
+        "description": null,
+        "created_at": "2025-04-14T03:08:37.704Z",
+        "updated_at": "2025-04-14T03:08:37.704Z",
+        "archived_at": "2025-04-14T11:17:52Z",
+        "business_model": 2,
+        "service_categories": [
+            1
+        ],
+        "service_areas": [
+            1
+        ],
+        "include_rate_cards": []
+    }
+},
+{
+    "model": "rate_card.ratecard",
+    "pk": 6,
+    "fields": {
+        "milestone": "m4",
+        "title": "Inbound Japan Report (SaaS)（訪日旅行者マップ）",
+        "price": "2700.00",
+        "price_unit": "monthly",
+        "default_amount": 12,
+        "min_amount": 1,
+        "is_recurring": true,
+        "is_latest": true,
+        "is_archived": false,
+        "version": 1,
+        "description": null,
+        "created_at": "2025-04-14T06:24:27.630Z",
+        "updated_at": "2025-04-14T06:56:01.953Z",
+        "archived_at": null,
+        "business_model": 4,
+        "service_categories": [
+            7
+        ],
+        "service_areas": [
+            2
+        ],
+        "include_rate_cards": []
+    }
+},
+{
     "model": "rate_card.businessmodel",
     "pk": 1,
     "fields": {
@@ -172,6 +228,56 @@
         "description": null,
         "created_at": "2025-03-31T14:50:45.826Z",
         "updated_at": "2025-03-31T14:50:45.826Z"
+    }
+},
+{
+    "model": "rate_card.servicecategory",
+    "pk": 3,
+    "fields": {
+        "title": "Data Collection",
+        "description": null,
+        "created_at": "2025-04-14T06:16:45.049Z",
+        "updated_at": "2025-04-14T06:16:45.050Z"
+    }
+},
+{
+    "model": "rate_card.servicecategory",
+    "pk": 4,
+    "fields": {
+        "title": "Data Cloud Infra",
+        "description": null,
+        "created_at": "2025-04-14T06:16:54.541Z",
+        "updated_at": "2025-04-14T06:16:54.541Z"
+    }
+},
+{
+    "model": "rate_card.servicecategory",
+    "pk": 5,
+    "fields": {
+        "title": "Cloud Data Modeling",
+        "description": null,
+        "created_at": "2025-04-14T06:17:03.977Z",
+        "updated_at": "2025-04-14T06:17:03.977Z"
+    }
+},
+{
+    "model": "rate_card.servicecategory",
+    "pk": 6,
+    "fields": {
+        "title": "Predictive Analytics(BI)",
+        "description": null,
+        "created_at": "2025-04-14T06:17:31.528Z",
+        "updated_at": "2025-04-14T06:17:31.528Z"
+    }
+},
+{
+    "model": "rate_card.servicecategory",
+    "pk": 7,
+    "fields": {
+        "title": "Data Enrichment",
+        "description": null,
+        "created_at": "2025-04-14T06:17:43.093Z",
+        "updated_at": "2025-04-14T06:17:43.093Z"
     }
 },
 {
